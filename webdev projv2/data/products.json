@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "name": "Americano",
+    "desc": "Pure strong coffee with a bold and smooth finish.",
+    "price": 150,
+    "category": "espresso",
+    "type": "drink",
+    "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&q=80",
+    "stock": 50,
+    "status": "In Stock"
+  },
+  {
+    "id": 2,
+    "name": "Spanish Latte",
+    "desc": "Creamy espresso blended with sweet milk.",
+    "price": 175,
+    "category": "espresso",
+    "type": "drink",
+    "image": "https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=400&q=80",
+    "stock": 30,
+    "status": "In Stock"
+  },
+  {
+    "id": 3,
+    "name": "Cappuccino",
+    "desc": "Classic espresso topped with silky foam.",
+    "price": 165,
+    "category": "espresso",
+    "type": "drink",
+    "image": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&q=80",
+    "stock": 40,
+    "status": "In Stock"
+  },
+  {
+    "id": 4,
+    "name": "Caramel Macchiato",
+    "desc": "Espresso with vanilla milk and caramel drizzle.",
+    "price": 185,
+    "category": "espresso",
+    "type": "drink",
+    "image": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80",
+    "stock": 25,
+    "status": "In Stock"
+  },
+  {
+    "id": 5,
+    "name": "Butter Croissant",
+    "desc": "Flaky and buttery pastry baked fresh daily.",
+    "price": 95,
+    "category": "pastries",
+    "type": "pastry",
+    "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400&q=80",
+    "stock": 20,
+    "status": "In Stock"
+  },
+  {
+    "id": 6,
+    "name": "Choco Chocolate",
+    "desc": "Chocolate-filled pastry topped with almonds.",
+    "price": 110,
+    "category": "pastries",
+    "type": "pastry",
+    "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80",
+    "stock": 15,
+    "status": "In Stock"
+  },
+  {
+    "id": 7,
+    "name": "Cheese Danish",
+    "desc": "Sweet pastry filled with rich cream cheese.",
+    "price": 100,
+    "category": "pastries",
+    "type": "pastry",
+    "image": "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=400&q=80",
+    "stock": 25,
+    "status": "In Stock"
+  },
+  {
+    "id": 8,
+    "name": "Berry Matcha",
+    "desc": "Refreshing matcha with berry flavors.",
+    "price": 165,
+    "category": "nocoffee",
+    "type": "drink",
+    "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80",
+    "stock": 30,
+    "status": "In Stock"
+  },
+  {
+    "id": 9,
+    "name": "Hibi-berry Tea",
+    "desc": "Hibiscus tea infused with sweet berries.",
+    "price": 150,
+    "category": "nocoffee",
+    "type": "drink",
+    "image": "https://images.unsplash.com/photo-1582479977511-f0bf69ebeb87?w=400&q=80",
+    "stock": 25,
+    "status": "In Stock"
+  },
+  {
+    "id": 10,
+    "name": "Peach Oolong",
+    "desc": "Light oolong tea blended with peach syrup.",
+    "price": 155,
+    "category": "nocoffee",
+    "type": "drink",
+    "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80",
+    "stock": 20,
+    "status": "In Stock"    
+  }
+]

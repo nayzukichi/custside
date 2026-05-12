@@ -1,0 +1,21 @@
+<?php
+session_start();
+if (!isset($_SESSION['user'])) { header('Location: login.php'); exit; }
+$orders = json_decode(file_get_contents('../data/order.json'), true);
+$user_orders = array_filter($orders, fn($o) => $o['customer_email'] === $_SESSION['user']['email']);
+if (empty($user_orders)) { header('Location: menu.php'); exit; }
+$order = end($user_orders);
+$steps = ['Pending', 'Preparing', 'Ready for Pickup'];
+$current_step = array_search($order['status'], $steps);
+if ($current_step === false) $current_step = 0;
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Order Status — King's Cup</title><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head>
+<body>
+<nav class="navbar"><div class="nav-inner"><a href="index.php" class="nav-logo"><div class="logo-icon"><svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#3b1f0e"/><path d="M10 22 Q12 14 18 12 Q24 14 26 22 Q22 26 18 27 Q14 26 10 22Z" fill="#c8860a"/><circle cx="18" cy="19" r="4" fill="#3b1f0e"/></svg></div><span class="logo-text">King's Cup</span></a><ul class="nav-links"><li><a href="menu.php">Menu</a></li><li><a href="view_orders.php">View Orders</a></li><li><a href="order_status.php" class="active">Order Status</a></li><li><a href="order_history.php">Order History</a></li></ul><a href="profile.php" class="nav-profile"><svg width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#c8860a"/><circle cx="16" cy="13" r="5" fill="white"/><path d="M6 26c0-5.523 4.477-8 10-8s10 2.477 10 8" fill="white"/></svg></a><button class="hamburger" id="hamburger">☰</button></div></nav>
+<div class="os-page"><div class="os-thankyou"><h2>Thank You!</h2></div><div class="os-card"><p><strong>Order <?= htmlspecialchars($order['id']) ?></strong></p><p>Order Type: <?= htmlspecialchars($order['type']) ?></p><p>Status: <strong><?= htmlspecialchars($order['status']) ?></strong></p><p>Placed on <?= date('F j, Y', strtotime($order['placed_at'])) ?></p><div class="os-progress"><div class="os-progress-track"><?php foreach ($steps as $i => $step): ?><div class="os-step <?= $i <= $current_step ? 'os-step-done' : '' ?> <?= $i === $current_step ? 'os-step-active' : '' ?>"><div class="os-step-circle"><?php if ($i <= $current_step): ?><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3 3 7-7" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/></svg><?php endif; ?></div><span class="os-step-label"><?= $step ?></span></div><?php if ($i < count($steps)-1): ?><div class="os-progress-line <?= $i < $current_step ? 'os-line-done' : '' ?>"></div><?php endif; ?><?php endforeach; ?></div></div></div><div class="os-card"><h3 class="os-summary-title">Order Summary</h3><div class="os-table-wrap"><table class="vo-table"><tbody><?php foreach ($order['items'] as $item): ?><tr><td class="td-product"><img src="<?= htmlspecialchars($item['img']) ?>" alt="<?= htmlspecialchars($item['name']) ?>"><span class="td-name"><?= htmlspecialchars($item['name']) ?></span></td><td>₱<?= number_format($item['price']) ?></td><td><?= $item['quantity'] ?></td><td>₱<?= number_format($item['price'] * $item['quantity']) ?></td></tr><?php endforeach; ?></tbody><tfoot><tr><td colspan="2" class="tf-label">Order Total:</td><td class="tf-total">₱<?= number_format($order['total']) ?></td></tr></tfoot></table></div></div><div style="text-align:center; margin-top:24px;"><a href="menu.php" class="btn-place-order">Order Again</a></div></div>
+<footer class="footer"><div class="footer-inner"><div class="footer-contact"><p class="footer-label">Contact us via:</p><p>vibri@gmail.com</p><p>King's Cup Coffee</p></div><div class="footer-copy"><p>&copy; <?= date('Y') ?> King's Cup Coffee Enterprises. All rights reserved.</p></div></div></footer>
+<script src="main.js"></script>
+</body>
+</html>
